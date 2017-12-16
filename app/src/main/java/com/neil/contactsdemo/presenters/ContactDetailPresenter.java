@@ -38,7 +38,6 @@ public final class ContactDetailPresenter implements ContactDetailContract.Prese
         pnConfiguration.setPublishKey(PUBNUB_PUBLISH_KEY);
         pnConfiguration.setSecure(false);
         mPubNubInstance = new PubNub(pnConfiguration);
-        mPubNubInstance.addListener(mSubscribeCallback);
     }
 
     @Override
@@ -53,6 +52,7 @@ public final class ContactDetailPresenter implements ContactDetailContract.Prese
 
     @Override
     public void subscribePubNubChannels() {
+        mPubNubInstance.addListener(mSubscribeCallback);
         mPubNubInstance.subscribe()
                 .channels(Arrays.asList(PUBNUB_CHANNEL_NAME))
                 .execute();
@@ -60,6 +60,7 @@ public final class ContactDetailPresenter implements ContactDetailContract.Prese
 
     @Override
     public void unsubscribePubNubChannels() {
+        mPubNubInstance.removeListener(mSubscribeCallback);
         mPubNubInstance.unsubscribe()
                 .channels(Arrays.asList(PUBNUB_CHANNEL_NAME))
                 .execute();
