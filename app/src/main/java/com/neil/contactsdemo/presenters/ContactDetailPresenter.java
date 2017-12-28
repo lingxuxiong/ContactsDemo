@@ -28,7 +28,7 @@ public final class ContactDetailPresenter implements ContactDetailContract.Prese
     private static final String PUBNUB_SUBSCRIBE_KEY = "sub-c-a8679dc8-dd3b-11e7-a23d-227f5812a52e";
     private static final String PUBNUB_PUBLISH_KEY= "pub-c-e2d3da1e-cd6f-4878-a4ee-038dcdfdec03";
 
-    private final Handler mUiHandler = new Handler();
+    private final static Handler mUiHandler = new Handler();
 
     public ContactDetailPresenter(@NonNull ContactDetailContract.View view) {
         mView = view;
